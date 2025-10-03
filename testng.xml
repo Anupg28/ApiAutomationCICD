@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="1" name="Test">
+    <classes>
+      <class name="com.videogamedb.testcase.TC03_GETaVideoGame"/>
+      <class name="com.videogamedb.testcase.TC11_GETDelayResponse"/>
+      <class name="com.videogamedb.testcase.TC07_GETReqresList"/>
+      <class name="com.videogamedb.testcase.TC15_SingleResourceNotFound"/>
+      <class name="com.videogamedb.testcase.TC08_POSTRegister"/>
+      <class name="com.videogamedb.testcase.sample"/>
+      <class name="com.videogamedb.testcase.TC09_POSTLoginReqres"/>
+      <class name="com.videogamedb.testcase.TC13_GETResourceList"/>
+      <class name="com.videogamedb.testcase.TC01_GETVideoGameLIst"/>
+      <class name="com.videogamedb.testcase.TC04_PUT"/>
+      <class name="com.videogamedb.testcase.TC10_POSTUnsuccessfulLogin"/>
+      <class name="com.videogamedb.testcase.TC02_POST"/>
+      <class name="com.videogamedb.testcase.TC06_CreeateReqres"/>
+      <class name="com.videogamedb.testcase.TC12_POSTUnsuccessfulRegister"/>
+      <class name="com.videogamedb.testcase.TC14_GETSingleResource"/>
+      <class name="com.videogamedb.testcase.TC05_DELETE"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

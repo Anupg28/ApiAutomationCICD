@@ -1,0 +1,16 @@
+{
+    "credentials": [
+        {
+            "email": "eve.holt@reqres.in",
+            "password": "anup"
+        },
+        {
+            "email": "eve.holt@reqres.in",
+            "password": "shahid"
+        },
+        {
+            "email": "eve.holt@reqres.in",
+            "password": "pistol"
+        }
+    ]
+}

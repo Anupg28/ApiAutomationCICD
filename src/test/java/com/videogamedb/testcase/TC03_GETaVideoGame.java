@@ -1,0 +1,36 @@
+package com.videogamedb.testcase;
+
+import java.io.IOException;
+
+import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+import com.videogamedb.library.TestBase;
+import com.videogamedb.pojo.Helper;
+
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+
+public class TC03_GETaVideoGame extends TestBase {
+	RequestSpecification request;
+	Helper help;
+   @BeforeClass
+	public void name() throws IOException {
+		request = setupRest("videoGame");
+		this.help = new Helper(request);
+	}
+   @Test
+	public void getSpecificId() {
+		Response response = help.singleVideoGame();
+		response.prettyPrint();
+		String header = response.getHeader("Content-Type");
+		Assert.assertEquals(header, "application/json");
+
+		JsonPath jsonpath = response.getBody().jsonPath();
+		int id = jsonpath.get("id");
+		Assert.assertEquals(id, 2);
+	}
+
+}
