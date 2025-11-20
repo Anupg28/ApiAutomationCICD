@@ -11,48 +11,95 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    # -------------------------------------------------------
+    # 1) Notify Start Message to Google Chat
+    # -------------------------------------------------------
     - name: Notify Start - Google Chat
       run: |
         curl -H 'Content-Type: application/json' \
         -d "{\"text\": \"🚀 *Test Execution Started*\n🔹 Repo: ${{ github.repository }}\n👤 Triggered by: ${{ github.actor }}\n🔁 Run ID: #${{ github.run_number }}\"}" \
         "${{ secrets.GOOGLE_CHAT_WEBHOOK }}"
 
+    # -------------------------------------------------------
+    # 2) Checkout Repo
+    # -------------------------------------------------------
     - name: Checkout repo
       uses: actions/checkout@v3
 
+    # -------------------------------------------------------
+    # 3) Install Java
+    # -------------------------------------------------------
     - name: Set up Java
       uses: actions/setup-java@v3
       with:
         distribution: 'temurin'
         java-version: '17'
 
+    # -------------------------------------------------------
+    # 4) Build & Test with Maven
+    # -------------------------------------------------------
     - name: Build with Maven and run tests
       run: mvn clean test -DsuiteXmlFile=testng.xml
 
+    # -------------------------------------------------------
+    # 5) Archive TestNG Report
+    # -------------------------------------------------------
     - name: Archive Test Report
       uses: actions/upload-artifact@v4
       with:
         name: surefire-report
         path: target/surefire-reports/
 
-    # - name: Create timestamped report directory
-    #   id: timestamp
-    #   run: |
-    #     export TS="run-$(date +%Y-%m-%d_%H-%M-%S)"
-    #     mkdir -p gh-pages/$TS
-    #     cp -r target/surefire-reports/* gh-pages/$TS/
-    #     echo "report_path=$TS" >> $GITHUB_OUTPUT
+    # -------------------------------------------------------
+    # 6) Email Report via SMTP (send emailable-report.html)
+    # -------------------------------------------------------
+    - name: Email Test Report
+      uses: dawidd6/action-send-mail@v3
+      with:
+        server_address: smtp.gmail.com
+        server_port: 587
+        username: ${{ secrets.EMAIL_USERNAME }}
+        password: ${{ secrets.EMAIL_PASSWORD }}
+        subject: "Selenium Test Report - Run #${{ github.run_number }}"
+        to: "stakeholder1@example.com, stakeholder2@example.com"
+        from: "CI Bot <${{ secrets.EMAIL_USERNAME }}>"
+        body: |
+          Hello Team,
+          
+          Please find attached the Selenium TestNG emailable report for Run #${{ github.run_number }}.
+          
+          Regards,
+          GitHub CI Pipeline
+        attachments: |
+          target/surefire-reports/emailable-report.html
 
-    # - name: Deploy timestamped report to GitHub Pages
-    #   if: always()
-    #   uses: peaceiris/actions-gh-pages@v3
-    #   with:
-    #     personal_token: ${{ secrets.REPORT_REPO_PAT }}
-    #     external_repository: agammishra12/selenium-reports-public
-    #     publish_branch: gh-pages
-    #     publish_dir: gh-pages
-    #     keep_files: true
+    # -------------------------------------------------------
+    # 7) Dynamic Folder Creation (timestamped)
+    # -------------------------------------------------------
+    - name: Create timestamped report directory
+      id: timestamp
+      run: |
+        export TS="run-$(date +%Y-%m-%d_%H-%M-%S)"
+        echo "report_path=$TS" >> $GITHUB_OUTPUT
+        mkdir -p gh-pages/$TS
+        cp -r target/surefire-reports/* gh-pages/$TS/
 
+    # -------------------------------------------------------
+    # 8) Deploy to GitHub Pages
+    # -------------------------------------------------------
+    - name: Deploy report to GitHub Pages
+      if: always()
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        personal_token: ${{ secrets.REPORT_REPO_PAT }}
+        external_repository: agammishra12/selenium-reports-public
+        publish_branch: gh-pages
+        publish_dir: gh-pages
+        keep_files: true
+
+    # -------------------------------------------------------
+    # 9) Notify Completion - Google Chat
+    # -------------------------------------------------------
     - name: Notify Completion - Google Chat
       if: always()
       run: |
