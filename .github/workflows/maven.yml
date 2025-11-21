@@ -51,8 +51,8 @@ jobs:
         username: ${{ secrets.EMAIL_USERNAME }}
         password: ${{ secrets.EMAIL_PASSWORD }}
         subject: "Test Execution Report - Run #${{ github.run_number }}"
-        to: "anupg28@gmail.com"
-        from: "anupg28@gmail.com"
+        to: "ghodake.anup@thinkitive.com"
+        from: "anupghodake28@gmail.com"
         attachments: "target/surefire-reports/emailable-report.html"
         body: |
           Hello Team,
