@@ -3,17 +3,6 @@
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="com.videogamedb.testcase.sample">
-        <methods>
-          <include name="post"/>
-        </methods>
-      </class> <!-- com.videogamedb.testcase.sample -->
-      <class name="com.videogamedb.testcase.TC03_GETaVideoGame">
-        <methods>
-          <include name="getSpecificId"/>
-          <include name="name"/>
-        </methods>
-      </class> <!-- com.videogamedb.testcase.TC03_GETaVideoGame -->
       <class name="com.videogamedb.testcase.TC05_DELETE">
         <methods>
           <include name="testDeleteVideoGame"/>

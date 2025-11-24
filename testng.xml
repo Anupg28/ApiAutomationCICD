@@ -4,7 +4,7 @@
   <test thread-count="1" name="Test">
     <classes>
       <class name="com.videogamedb.testcase.TC03_GETaVideoGame"/>
-      <class name="com.videogamedb.testcase.TC11_GETDelayResponse"/>
+     <class name="com.videogamedb.testcase.TC11_GETDelayResponse"/>
       <class name="com.videogamedb.testcase.TC07_GETReqresList"/>
       <class name="com.videogamedb.testcase.TC15_SingleResourceNotFound"/>
       <class name="com.videogamedb.testcase.TC08_POSTRegister"/>
@@ -18,7 +18,7 @@
       <class name="com.videogamedb.testcase.TC06_CreeateReqres"/>
       <class name="com.videogamedb.testcase.TC12_POSTUnsuccessfulRegister"/>
       <class name="com.videogamedb.testcase.TC14_GETSingleResource"/>
-      <class name="com.videogamedb.testcase.TC05_DELETE"/>
-    </classes>
+      <class name="com.videogamedb.testcase.TC05_DELETE"/> 
+    </classes> 
   </test> <!-- Test -->
 </suite> <!-- Suite -->
