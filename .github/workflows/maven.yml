@@ -1,0 +1,96 @@
+name: Selenium CI Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+
+    # ------------------ 1. Notify Start ------------------
+    - name: Notify Start - Google Chat
+      run: |
+        curl -H 'Content-Type: application/json' \
+        -d "{\"text\": \"🚀 *Test Execution Started*\n🔹 Repo: ${{ github.repository }}\n👤 Triggered by: ${{ github.actor }}\n🔁 Run ID: #${{ github.run_number }}\"}" \
+        "${{ secrets.GOOGLE_CHAT_WEBHOOK }}"
+
+    # ------------------ 2. Checkout Code ------------------
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    # ------------------ 3. Set Java ------------------
+    - name: Set up Java
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+
+    # ------------------ 4. Build & Run Tests ------------------
+    - name: Build with Maven and Run Tests
+      run: mvn clean test -DsuiteXmlFile=testng.xml
+
+    # ------------------ 5. Archive Test Report ------------------
+    - name: Archive Test Report
+      uses: actions/upload-artifact@v4
+      with:
+        name: surefire-report
+        path: target/surefire-reports/
+
+    # ------------------ 6. Email Test Report via SMTP ------------------
+    - name: Send Email Report
+      if: always()
+      uses: dawidd6/action-send-mail@v3
+      with:
+        server_address: smtp.gmail.com
+        server_port: 587
+        username: ${{ secrets.EMAIL_USERNAME }}
+        password: ${{ secrets.EMAIL_PASSWORD }}
+        subject: "Test Execution Report - Run #${{ github.run_number }}"
+        to: "ghodake.anup@thinkitive.com"
+        from: "anupghodake28@gmail.com"
+        attachments: "target/surefire-reports/emailable-report.html"
+        body: |
+          Hello Team,
+
+          Test Execution has been completed for Run #${{ github.run_number }}.
+          Attached is the TestNG HTML Report.
+
+          Regards,
+          Anup G
+
+    # ------------------ 7. Create Timestamped Folder ------------------
+    - name: Create timestamped report directory
+      id: timestamp
+      run: |
+        TS="run-$(date +'%Y-%m-%d_%H-%M-%S')"
+        mkdir -p gh-pages/$TS
+        cp -r target/surefire-reports/* gh-pages/$TS/
+        echo "report_path=$TS" >> $GITHUB_OUTPUT
+
+    # ------------------ 8. Deploy Report to GitHub Pages ------------------
+    - name: Deploy Reports to GitHub Pages
+      if: always()
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        personal_token: ${{ secrets.REPORT_REPO_PAT }}
+        external_repository: anupg28/api-test-reports   # your public report repo
+        publish_branch: gh-pages
+        publish_dir: gh-pages
+        keep_files: true
+
+    # ------------------ 9. Notify Completion ------------------
+    - name: Notify Completion - Google Chat
+      if: always()
+      run: |
+        STATUS="${{ job.status }}"
+        REPORT_PATH="${{ steps.timestamp.outputs.report_path }}"
+        REPORT_URL="https://anupg28.github.io/api-test-reports/${REPORT_PATH}/emailable-report.html"
+
+        curl -H 'Content-Type: application/json' \
+        -d "{\"text\": \"✅ *Test Execution Completed*\n📄 Status: $STATUS\n📎 [View Report]($REPORT_URL)\n👤 Author: Anup G\n🔁 Run ID: #${{ github.run_number }}\"}" \
+        "${{ secrets.GOOGLE_CHAT_WEBHOOK }}"
