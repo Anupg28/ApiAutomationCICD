@@ -2,96 +2,96 @@
 <testng-results ignored="0" total="16" passed="14" failed="2" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-11-24T12:42:01 IST" name="Suite" finished-at="2025-11-24T12:42:17 IST" duration-ms="15498">
+  <suite started-at="2025-11-24T17:20:15 IST" name="Suite" finished-at="2025-11-24T17:20:28 IST" duration-ms="13565">
     <groups>
     </groups>
-    <test started-at="2025-11-24T12:42:01 IST" name="Test" finished-at="2025-11-24T12:42:17 IST" duration-ms="15498">
+    <test started-at="2025-11-24T17:20:15 IST" name="Test" finished-at="2025-11-24T17:20:28 IST" duration-ms="13565">
       <class name="com.videogamedb.testcase.TC06_CreeateReqres">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.videogamedb.testcase.TC06_CreeateReqres@17f62e33]" started-at="2025-11-24T12:42:15 IST" name="setup" finished-at="2025-11-24T12:42:15 IST" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.videogamedb.testcase.TC06_CreeateReqres@17f62e33]" started-at="2025-11-24T17:20:27 IST" name="setup" finished-at="2025-11-24T17:20:27 IST" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testCreateReqres()[pri:0, instance:com.videogamedb.testcase.TC06_CreeateReqres@17f62e33]" started-at="2025-11-24T12:42:15 IST" name="testCreateReqres" finished-at="2025-11-24T12:42:16 IST" duration-ms="219" status="PASS">
+        <test-method signature="testCreateReqres()[pri:0, instance:com.videogamedb.testcase.TC06_CreeateReqres@17f62e33]" started-at="2025-11-24T17:20:27 IST" name="testCreateReqres" finished-at="2025-11-24T17:20:28 IST" duration-ms="478" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testCreateReqres -->
       </class> <!-- com.videogamedb.testcase.TC06_CreeateReqres -->
       <class name="com.videogamedb.testcase.TC12_POSTUnsuccessfulRegister">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.videogamedb.testcase.TC12_POSTUnsuccessfulRegister@76b1e9b8]" started-at="2025-11-24T12:42:16 IST" name="setup" finished-at="2025-11-24T12:42:16 IST" duration-ms="2" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.videogamedb.testcase.TC12_POSTUnsuccessfulRegister@76b1e9b8]" started-at="2025-11-24T17:20:28 IST" name="setup" finished-at="2025-11-24T17:20:28 IST" duration-ms="5" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testRegesterReqres()[pri:0, instance:com.videogamedb.testcase.TC12_POSTUnsuccessfulRegister@76b1e9b8]" started-at="2025-11-24T12:42:16 IST" name="testRegesterReqres" finished-at="2025-11-24T12:42:16 IST" duration-ms="305" status="PASS">
+        <test-method signature="testRegesterReqres()[pri:0, instance:com.videogamedb.testcase.TC12_POSTUnsuccessfulRegister@76b1e9b8]" started-at="2025-11-24T17:20:28 IST" name="testRegesterReqres" finished-at="2025-11-24T17:20:28 IST" duration-ms="303" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testRegesterReqres -->
       </class> <!-- com.videogamedb.testcase.TC12_POSTUnsuccessfulRegister -->
       <class name="com.videogamedb.testcase.TC13_GETResourceList">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.videogamedb.testcase.TC13_GETResourceList@7674f035]" started-at="2025-11-24T12:42:13 IST" name="setup" finished-at="2025-11-24T12:42:13 IST" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.videogamedb.testcase.TC13_GETResourceList@7674f035]" started-at="2025-11-24T17:20:24 IST" name="setup" finished-at="2025-11-24T17:20:24 IST" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testResourceList()[pri:0, instance:com.videogamedb.testcase.TC13_GETResourceList@7674f035]" started-at="2025-11-24T12:42:13 IST" name="testResourceList" finished-at="2025-11-24T12:42:13 IST" duration-ms="476" status="PASS">
+        <test-method signature="testResourceList()[pri:0, instance:com.videogamedb.testcase.TC13_GETResourceList@7674f035]" started-at="2025-11-24T17:20:24 IST" name="testResourceList" finished-at="2025-11-24T17:20:24 IST" duration-ms="106" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testResourceList -->
       </class> <!-- com.videogamedb.testcase.TC13_GETResourceList -->
       <class name="com.videogamedb.testcase.TC08_POSTRegister">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.videogamedb.testcase.TC08_POSTRegister@4b741d6d]" started-at="2025-11-24T12:42:09 IST" name="setup" finished-at="2025-11-24T12:42:09 IST" duration-ms="2" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.videogamedb.testcase.TC08_POSTRegister@4b741d6d]" started-at="2025-11-24T17:20:21 IST" name="setup" finished-at="2025-11-24T17:20:21 IST" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testRegesterReqres()[pri:0, instance:com.videogamedb.testcase.TC08_POSTRegister@4b741d6d]" started-at="2025-11-24T12:42:09 IST" name="testRegesterReqres" finished-at="2025-11-24T12:42:10 IST" duration-ms="1162" status="PASS">
+        <test-method signature="testRegesterReqres()[pri:0, instance:com.videogamedb.testcase.TC08_POSTRegister@4b741d6d]" started-at="2025-11-24T17:20:21 IST" name="testRegesterReqres" finished-at="2025-11-24T17:20:22 IST" duration-ms="1135" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testRegesterReqres -->
       </class> <!-- com.videogamedb.testcase.TC08_POSTRegister -->
       <class name="com.videogamedb.testcase.TC09_POSTLoginReqres">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.videogamedb.testcase.TC09_POSTLoginReqres@8f2ef19]" started-at="2025-11-24T12:42:12 IST" name="setup" finished-at="2025-11-24T12:42:12 IST" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.videogamedb.testcase.TC09_POSTLoginReqres@8f2ef19]" started-at="2025-11-24T17:20:24 IST" name="setup" finished-at="2025-11-24T17:20:24 IST" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testLoginReqres()[pri:0, instance:com.videogamedb.testcase.TC09_POSTLoginReqres@8f2ef19]" started-at="2025-11-24T12:42:12 IST" name="testLoginReqres" finished-at="2025-11-24T12:42:13 IST" duration-ms="429" status="PASS">
+        <test-method signature="testLoginReqres()[pri:0, instance:com.videogamedb.testcase.TC09_POSTLoginReqres@8f2ef19]" started-at="2025-11-24T17:20:24 IST" name="testLoginReqres" finished-at="2025-11-24T17:20:24 IST" duration-ms="240" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testLoginReqres -->
       </class> <!-- com.videogamedb.testcase.TC09_POSTLoginReqres -->
       <class name="com.videogamedb.testcase.TC02_POST">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.videogamedb.testcase.TC02_POST@74ea2410]" started-at="2025-11-24T12:42:15 IST" name="setup" finished-at="2025-11-24T12:42:15 IST" duration-ms="241" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.videogamedb.testcase.TC02_POST@74ea2410]" started-at="2025-11-24T17:20:26 IST" name="setup" finished-at="2025-11-24T17:20:27 IST" duration-ms="244" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="postRequest()[pri:0, instance:com.videogamedb.testcase.TC02_POST@74ea2410]" started-at="2025-11-24T12:42:15 IST" name="postRequest" finished-at="2025-11-24T12:42:15 IST" duration-ms="507" status="PASS">
+        <test-method signature="postRequest()[pri:0, instance:com.videogamedb.testcase.TC02_POST@74ea2410]" started-at="2025-11-24T17:20:27 IST" name="postRequest" finished-at="2025-11-24T17:20:27 IST" duration-ms="476" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- postRequest -->
       </class> <!-- com.videogamedb.testcase.TC02_POST -->
       <class name="com.videogamedb.testcase.TC10_POSTUnsuccessfulLogin">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.videogamedb.testcase.TC10_POSTUnsuccessfulLogin@25ce9dc4]" started-at="2025-11-24T12:42:14 IST" name="setup" finished-at="2025-11-24T12:42:14 IST" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.videogamedb.testcase.TC10_POSTUnsuccessfulLogin@25ce9dc4]" started-at="2025-11-24T17:20:26 IST" name="setup" finished-at="2025-11-24T17:20:26 IST" duration-ms="2" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testUnsuccessfulLogin()[pri:0, instance:com.videogamedb.testcase.TC10_POSTUnsuccessfulLogin@25ce9dc4]" started-at="2025-11-24T12:42:14 IST" name="testUnsuccessfulLogin" finished-at="2025-11-24T12:42:15 IST" duration-ms="390" status="PASS">
+        <test-method signature="testUnsuccessfulLogin()[pri:0, instance:com.videogamedb.testcase.TC10_POSTUnsuccessfulLogin@25ce9dc4]" started-at="2025-11-24T17:20:26 IST" name="testUnsuccessfulLogin" finished-at="2025-11-24T17:20:26 IST" duration-ms="359" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testUnsuccessfulLogin -->
       </class> <!-- com.videogamedb.testcase.TC10_POSTUnsuccessfulLogin -->
       <class name="com.videogamedb.testcase.TC14_GETSingleResource">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.videogamedb.testcase.TC14_GETSingleResource@27406a17]" started-at="2025-11-24T12:42:16 IST" name="setup" finished-at="2025-11-24T12:42:16 IST" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.videogamedb.testcase.TC14_GETSingleResource@27406a17]" started-at="2025-11-24T17:20:28 IST" name="setup" finished-at="2025-11-24T17:20:28 IST" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testSinglrResource()[pri:0, instance:com.videogamedb.testcase.TC14_GETSingleResource@27406a17]" started-at="2025-11-24T12:42:16 IST" name="testSinglrResource" finished-at="2025-11-24T12:42:16 IST" duration-ms="474" status="PASS">
+        <test-method signature="testSinglrResource()[pri:0, instance:com.videogamedb.testcase.TC14_GETSingleResource@27406a17]" started-at="2025-11-24T17:20:28 IST" name="testSinglrResource" finished-at="2025-11-24T17:20:28 IST" duration-ms="76" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSinglrResource -->
       </class> <!-- com.videogamedb.testcase.TC14_GETSingleResource -->
       <class name="com.videogamedb.testcase.TC05_DELETE">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.videogamedb.testcase.TC05_DELETE@2af004b]" started-at="2025-11-24T12:42:16 IST" name="setup" finished-at="2025-11-24T12:42:16 IST" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.videogamedb.testcase.TC05_DELETE@2af004b]" started-at="2025-11-24T17:20:28 IST" name="setup" finished-at="2025-11-24T17:20:28 IST" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testDeleteVideoGame()[pri:0, instance:com.videogamedb.testcase.TC05_DELETE@2af004b]" started-at="2025-11-24T12:42:16 IST" name="testDeleteVideoGame" finished-at="2025-11-24T12:42:17 IST" duration-ms="420" status="FAIL">
+        <test-method signature="testDeleteVideoGame()[pri:0, instance:com.videogamedb.testcase.TC05_DELETE@2af004b]" started-at="2025-11-24T17:20:28 IST" name="testDeleteVideoGame" finished-at="2025-11-24T17:20:28 IST" duration-ms="248" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[expected [Video game deleted] but found [[{"id":1,"name":"Resident Evil 4","releaseDate":"2005-10-01 23:59:59","reviewScore":85,"category":"Shooter","rating":"Universal"},{"id":2,"name":"Gran Turismo 3","releaseDate":"2001-03-10 23:59:59","reviewScore":91,"category":"Driving","rating":"Universal"},{"id":3,"name":"Tetris","releaseDate":"1984-06-25 23:59:59","reviewScore":88,"category":"Puzzle","rating":"Universal"},{"id":4,"name":"Super Mario 64","releaseDate":"1996-10-20 23:59:59","reviewScore":90,"category":"Platform","rating":"Universal"},{"id":5,"name":"The Legend of Zelda: Ocarina of Time","releaseDate":"1998-12-10 23:59:59","reviewScore":93,"category":"Adventure","rating":"PG-13"},{"id":6,"name":"Doom","releaseDate":"1993-02-18 23:59:59","reviewScore":81,"category":"Shooter","rating":"Mature"},{"id":7,"name":"Minecraft","releaseDate":"2011-12-05 23:59:59","reviewScore":77,"category":"Puzzle","rating":"Universal"},{"id":8,"name":"SimCity 2000","releaseDate":"1994-09-11 23:59:59","reviewScore":88,"category":"Strategy","rating":"Universal"},{"id":9,"name":"Final Fantasy VII","releaseDate":"1997-08-20 23:59:59","reviewScore":97,"category":"RPG","rating":"PG-13"},{"id":10,"name":"Grand Theft Auto III","releaseDate":"2001-04-23 23:59:59","reviewScore":90,"category":"Driving","rating":"Mature"}]]]]>
@@ -141,21 +141,21 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
         </test-method> <!-- testDeleteVideoGame -->
       </class> <!-- com.videogamedb.testcase.TC05_DELETE -->
       <class name="com.videogamedb.testcase.TC03_GETaVideoGame">
-        <test-method is-config="true" signature="name()[pri:0, instance:com.videogamedb.testcase.TC03_GETaVideoGame@6892b3b6]" started-at="2025-11-24T12:42:01 IST" name="name" finished-at="2025-11-24T12:42:02 IST" duration-ms="393" status="PASS">
+        <test-method is-config="true" signature="name()[pri:0, instance:com.videogamedb.testcase.TC03_GETaVideoGame@6892b3b6]" started-at="2025-11-24T17:20:15 IST" name="name" finished-at="2025-11-24T17:20:15 IST" duration-ms="418" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- name -->
-        <test-method signature="getSpecificId()[pri:0, instance:com.videogamedb.testcase.TC03_GETaVideoGame@6892b3b6]" started-at="2025-11-24T12:42:02 IST" name="getSpecificId" finished-at="2025-11-24T12:42:04 IST" duration-ms="2052" status="PASS">
+        <test-method signature="getSpecificId()[pri:0, instance:com.videogamedb.testcase.TC03_GETaVideoGame@6892b3b6]" started-at="2025-11-24T17:20:15 IST" name="getSpecificId" finished-at="2025-11-24T17:20:17 IST" duration-ms="1625" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getSpecificId -->
       </class> <!-- com.videogamedb.testcase.TC03_GETaVideoGame -->
       <class name="com.videogamedb.testcase.TC04_PUT">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.videogamedb.testcase.TC04_PUT@173ed316]" started-at="2025-11-24T12:42:13 IST" name="setup" finished-at="2025-11-24T12:42:14 IST" duration-ms="302" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.videogamedb.testcase.TC04_PUT@173ed316]" started-at="2025-11-24T17:20:25 IST" name="setup" finished-at="2025-11-24T17:20:26 IST" duration-ms="436" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="putRequest()[pri:0, instance:com.videogamedb.testcase.TC04_PUT@173ed316]" started-at="2025-11-24T12:42:14 IST" name="putRequest" finished-at="2025-11-24T12:42:14 IST" duration-ms="486" status="FAIL">
+        <test-method signature="putRequest()[pri:0, instance:com.videogamedb.testcase.TC04_PUT@173ed316]" started-at="2025-11-24T17:20:26 IST" name="putRequest" finished-at="2025-11-24T17:20:26 IST" duration-ms="595" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[expected [200] but found [405]]]>
@@ -205,47 +205,47 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
         </test-method> <!-- putRequest -->
       </class> <!-- com.videogamedb.testcase.TC04_PUT -->
       <class name="com.videogamedb.testcase.TC15_SingleResourceNotFound">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.videogamedb.testcase.TC15_SingleResourceNotFound@15bb5034]" started-at="2025-11-24T12:42:08 IST" name="setup" finished-at="2025-11-24T12:42:08 IST" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.videogamedb.testcase.TC15_SingleResourceNotFound@15bb5034]" started-at="2025-11-24T17:20:20 IST" name="setup" finished-at="2025-11-24T17:20:20 IST" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testSinglrResourceNotFound()[pri:0, instance:com.videogamedb.testcase.TC15_SingleResourceNotFound@15bb5034]" started-at="2025-11-24T12:42:08 IST" name="testSinglrResourceNotFound" finished-at="2025-11-24T12:42:09 IST" duration-ms="819" status="PASS">
+        <test-method signature="testSinglrResourceNotFound()[pri:0, instance:com.videogamedb.testcase.TC15_SingleResourceNotFound@15bb5034]" started-at="2025-11-24T17:20:20 IST" name="testSinglrResourceNotFound" finished-at="2025-11-24T17:20:21 IST" duration-ms="434" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSinglrResourceNotFound -->
       </class> <!-- com.videogamedb.testcase.TC15_SingleResourceNotFound -->
       <class name="com.videogamedb.testcase.TC07_GETReqresList">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.videogamedb.testcase.TC07_GETReqresList@7d0b7e3c]" started-at="2025-11-24T12:42:08 IST" name="setup" finished-at="2025-11-24T12:42:08 IST" duration-ms="2" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.videogamedb.testcase.TC07_GETReqresList@7d0b7e3c]" started-at="2025-11-24T17:20:20 IST" name="setup" finished-at="2025-11-24T17:20:20 IST" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testGetReqresList()[pri:0, instance:com.videogamedb.testcase.TC07_GETReqresList@7d0b7e3c]" started-at="2025-11-24T12:42:08 IST" name="testGetReqresList" finished-at="2025-11-24T12:42:08 IST" duration-ms="292" status="PASS">
+        <test-method signature="testGetReqresList()[pri:0, instance:com.videogamedb.testcase.TC07_GETReqresList@7d0b7e3c]" started-at="2025-11-24T17:20:20 IST" name="testGetReqresList" finished-at="2025-11-24T17:20:20 IST" duration-ms="88" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testGetReqresList -->
       </class> <!-- com.videogamedb.testcase.TC07_GETReqresList -->
       <class name="com.videogamedb.testcase.TC01_GETVideoGameLIst">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.videogamedb.testcase.TC01_GETVideoGameLIst@69e153c5]" started-at="2025-11-24T12:42:13 IST" name="setup" finished-at="2025-11-24T12:42:13 IST" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.videogamedb.testcase.TC01_GETVideoGameLIst@69e153c5]" started-at="2025-11-24T17:20:24 IST" name="setup" finished-at="2025-11-24T17:20:24 IST" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="getVideoGameList()[pri:0, instance:com.videogamedb.testcase.TC01_GETVideoGameLIst@69e153c5]" started-at="2025-11-24T12:42:13 IST" name="getVideoGameList" finished-at="2025-11-24T12:42:13 IST" duration-ms="396" status="PASS">
+        <test-method signature="getVideoGameList()[pri:0, instance:com.videogamedb.testcase.TC01_GETVideoGameLIst@69e153c5]" started-at="2025-11-24T17:20:24 IST" name="getVideoGameList" finished-at="2025-11-24T17:20:25 IST" duration-ms="725" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getVideoGameList -->
       </class> <!-- com.videogamedb.testcase.TC01_GETVideoGameLIst -->
       <class name="com.videogamedb.testcase.TC11_GETDelayResponse">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.videogamedb.testcase.TC11_GETDelayResponse@6e9175d8]" started-at="2025-11-24T12:42:04 IST" name="setup" finished-at="2025-11-24T12:42:04 IST" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.videogamedb.testcase.TC11_GETDelayResponse@6e9175d8]" started-at="2025-11-24T17:20:17 IST" name="setup" finished-at="2025-11-24T17:20:17 IST" duration-ms="2" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testDelayResponse()[pri:0, instance:com.videogamedb.testcase.TC11_GETDelayResponse@6e9175d8]" started-at="2025-11-24T12:42:04 IST" name="testDelayResponse" finished-at="2025-11-24T12:42:08 IST" duration-ms="3718" status="PASS">
+        <test-method signature="testDelayResponse()[pri:0, instance:com.videogamedb.testcase.TC11_GETDelayResponse@6e9175d8]" started-at="2025-11-24T17:20:17 IST" name="testDelayResponse" finished-at="2025-11-24T17:20:20 IST" duration-ms="3483" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testDelayResponse -->
       </class> <!-- com.videogamedb.testcase.TC11_GETDelayResponse -->
       <class name="com.videogamedb.testcase.sample">
-        <test-method signature="post()[pri:0, instance:com.videogamedb.testcase.sample@2eae8e6e]" started-at="2025-11-24T12:42:10 IST" name="post" finished-at="2025-11-24T12:42:12 IST" duration-ms="2362" status="PASS">
+        <test-method signature="post()[pri:0, instance:com.videogamedb.testcase.sample@2eae8e6e]" started-at="2025-11-24T17:20:22 IST" name="post" finished-at="2025-11-24T17:20:24 IST" duration-ms="2038" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- post -->
