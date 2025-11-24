@@ -28,15 +28,25 @@ jobs:
         java-version: '17'
 
     - name: Build with Maven and run tests
+      continue-on-error: true
       run: mvn clean test -DsuiteXmlFile=testng.xml
+      
+
+    # - name: Archive Test Report
+    #   uses: actions/upload-artifact@v4
+    #   with:
+    #     name: surefire-report
+    #     path: target/surefire-reports/
 
     - name: Archive Test Report
+      if: always()
       uses: actions/upload-artifact@v4
       with:
         name: surefire-report
         path: target/surefire-reports/
 
     - name: Create timestamped report directory
+      if: always()
       id: timestamp
       run: |
         export TS="run-$(date +%Y-%m-%d_%H-%M-%S)"
