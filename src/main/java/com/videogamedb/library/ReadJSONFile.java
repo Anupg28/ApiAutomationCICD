@@ -16,7 +16,8 @@ public class ReadJSONFile {
 	public JSONObject jsonFileReader(String jsonfile) throws FileNotFoundException, IOException, ParseException {
 		// Define the path to the JSON file
 
-		jsonFilepath = System.getProperty("user.dir") + File.separator + "src\\test\\resources\\" + jsonfile;
+		jsonFilepath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
+				+ File.separator + "resources" + File.separator  + jsonfile;
 
 		// Load the JSON file into a File object
 		File jsonFile = new File(jsonFilepath);
@@ -27,30 +28,27 @@ public class ReadJSONFile {
 		return jsonData;
 
 	}
-	
-	//***********************************************************************************************************
-	
-	 
-	    public Object[][] jsonData11() throws FileNotFoundException, IOException, ParseException {
-		String jsonFilepath = System.getProperty("user.dir") + File.separator + "src\\test\\resources\\registerreqres.json";
-	        File file =new File(jsonFilepath);
-	        JSONParser parser=new JSONParser();
-	        JSONObject data=(JSONObject) parser.parse(new FileReader(file));
-	        JSONArray data1=(JSONArray)data.get("credentials");
-	 
-	        Object[][]  value = new Object[data1.size()][];
-	        for (int i = 0; i < data1.size(); i++) {
-			JSONObject	jsonObj=(JSONObject) data1.get(i);
-			
+
+	// ***********************************************************************************************************
+
+	public Object[][] jsonData11() throws FileNotFoundException, IOException, ParseException {
+		String jsonFilepath = System.getProperty("user.dir") + File.separator
+				+ "src\\test\\resources\\registerreqres.json";
+		File file = new File(jsonFilepath);
+		JSONParser parser = new JSONParser();
+		JSONObject data = (JSONObject) parser.parse(new FileReader(file));
+		JSONArray data1 = (JSONArray) data.get("credentials");
+
+		Object[][] value = new Object[data1.size()][];
+		for (int i = 0; i < data1.size(); i++) {
+			JSONObject jsonObj = (JSONObject) data1.get(i);
+
 			Object[] entry = jsonObj.values().toArray();
-			value[i]=entry;
-			}
-	        return value;
+			value[i] = entry;
+		}
+		return value;
 	}
-	 }
-
-
-
+}
 
 //public void name() throws FileNotFoundException, IOException, ParseException {
 //String jsonFilepath = System.getProperty("user.dir") + File.separator + "src\\test\\resources\\registerreqres.json";

@@ -18,9 +18,10 @@ public class TestBase {
 	public String token;
 	String username1 = "admin";
 	String password1 = "admin";
-	
+
 	public void loadPropertyfile(String baseUrlKey) throws IOException {
-		File file = new File(System.getProperty("user.dir") + "\\src\\test\\resources\\videogamedb.properties");
+		File file = new File(System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
+				+ File.separator + "resources" + File.separator + "videogamedb.properties");
 		FileInputStream fis = new FileInputStream(file);
 		Properties property = new Properties();
 		property.load(fis);
@@ -34,14 +35,11 @@ public class TestBase {
 		default:
 			System.out.println("Choose correct key");
 		}
-		
-		
 
-		
 	}
 
 	public RequestSpecification setupRest(String baseUrlKey) throws IOException {
-		
+
 		loadPropertyfile(baseUrlKey);
 		RestAssured.baseURI = this.baseUri;
 
