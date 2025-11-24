@@ -15,7 +15,7 @@ jobs:
     - name: Notify Start - Google Chat
       run: |
         curl -H 'Content-Type: application/json' \
-        -d "{\"text\": \"🚀 *Test Execution Started*\n🔹 Repo: ${{ github.repository }}\n👤 Triggered by: ${{ github.actor }}\n🔁 Run ID: #${{ github.run_number }}\"}" \
+        -d "{\"text\": \"🚀 Test Execution Started\n🔹 Repo: ${{ github.repository }}\n👤 Triggered by: ${{ github.actor }}\n🔁 Run ID: #${{ github.run_number }}\"}" \
         "${{ secrets.GOOGLE_CHAT_WEBHOOK }}"
 
     - name: Checkout repo
@@ -30,14 +30,37 @@ jobs:
     - name: Build with Maven and run tests
       continue-on-error: true
       run: mvn clean test -DsuiteXmlFile=testng.xml
-      
 
-    # - name: Archive Test Report
-    #   uses: actions/upload-artifact@v4
-    #   with:
-    #     name: surefire-report
-    #     path: target/surefire-reports/
+    # -------------------------------
+    #       EXTRACT TEST RESULTS
+    # -------------------------------
+    - name: Extract TestNG results
+      if: always()
+      id: testresults
+      run: |
+        RESULTS_FILE="target/surefire-reports/testng-results.xml"
 
+        if [ ! -f "$RESULTS_FILE" ]; then
+          echo "passed=0" >> $GITHUB_OUTPUT
+          echo "failed=0" >> $GITHUB_OUTPUT
+          echo "skipped=0" >> $GITHUB_OUTPUT
+          echo "total=0" >> $GITHUB_OUTPUT
+          exit 0
+        fi
+
+        PASSED=$(xmllint --xpath "string(/testng-results/@passed)" $RESULTS_FILE)
+        FAILED=$(xmllint --xpath "string(/testng-results/@failed)" $RESULTS_FILE)
+        SKIPPED=$(xmllint --xpath "string(/testng-results/@skipped)" $RESULTS_FILE)
+        TOTAL=$(xmllint --xpath "string(/testng-results/@total)" $RESULTS_FILE)
+
+        echo "passed=$PASSED" >> $GITHUB_OUTPUT
+        echo "failed=$FAILED" >> $GITHUB_OUTPUT
+        echo "skipped=$SKIPPED" >> $GITHUB_OUTPUT
+        echo "total=$TOTAL" >> $GITHUB_OUTPUT
+
+    # -------------------------------
+    #       SAVE TEST REPORT
+    # -------------------------------
     - name: Archive Test Report
       if: always()
       uses: actions/upload-artifact@v4
@@ -64,6 +87,9 @@ jobs:
         publish_dir: gh-pages
         keep_files: true
 
+    # -------------------------------
+    #     GOOGLE CHAT COMPLETION
+    # -------------------------------
     - name: Notify Completion - Google Chat
       if: always()
       run: |
@@ -71,10 +97,30 @@ jobs:
         REPORT_PATH="${{ steps.timestamp.outputs.report_path }}"
         REPORT_URL="https://Anupg28.github.io/api-test-reports/${REPORT_PATH}/emailable-report.html"
 
+        PASSED="${{ steps.testresults.outputs.passed }}"
+        FAILED="${{ steps.testresults.outputs.failed }}"
+        SKIPPED="${{ steps.testresults.outputs.skipped }}"
+        TOTAL="${{ steps.testresults.outputs.total }}"
+
         curl -H 'Content-Type: application/json' \
-        -d "{\"text\": \"✅ *Test Execution Completed*\n📄 Status: $STATUS\n📎 [View Report]($REPORT_URL)\n👤 Author: ${{ github.actor }}\n🔁 Run ID: #${{ github.run_number }}\"}" \
+        -d "{
+              \"text\": \"✅ Test Execution Completed
+📊 *Test Summary*
+✔️ Passed: $PASSED
+❌ Failed: $FAILED
+⚠️ Skipped: $SKIPPED
+📦 Total: $TOTAL
+
+📄 Status: $STATUS
+🔗 [View Report]($REPORT_URL)
+👤 Author: ${{ github.actor }}
+🔁 Run ID: #${{ github.run_number }}\"
+            }" \
         "${{ secrets.GOOGLE_CHAT_WEBHOOK }}"
 
+    # -------------------------------
+    #      EMAIL REPORT SECTION
+    # -------------------------------
     - name: Send Email Report
       if: always()
       uses: dawidd6/action-send-mail@v3
@@ -91,7 +137,14 @@ jobs:
           Hello Team,
 
           Test Execution has been completed for Run #${{ github.run_number }}.
-          I've attached the TestNG HTML Report.
+
+          📊 Test Summary:
+          ✔️ Passed: ${{ steps.testresults.outputs.passed }}
+          ❌ Failed: ${{ steps.testresults.outputs.failed }}
+          ⚠️ Skipped: ${{ steps.testresults.outputs.skipped }}
+          📦 Total: ${{ steps.testresults.outputs.total }}
+
+          The TestNG HTML Report is attached.
 
           Regards,
-          Anup G 
+          Anup G
