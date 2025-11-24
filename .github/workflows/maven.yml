@@ -74,3 +74,24 @@ jobs:
         curl -H 'Content-Type: application/json' \
         -d "{\"text\": \"✅ *Test Execution Completed*\n📄 Status: $STATUS\n📎 [View Report]($REPORT_URL)\n👤 Author: ${{ github.actor }}\n🔁 Run ID: #${{ github.run_number }}\"}" \
         "${{ secrets.GOOGLE_CHAT_WEBHOOK }}"
+
+    - name: Send Email Report
+      if: always()
+      uses: dawidd6/action-send-mail@v3
+      with:
+        server_address: smtp.gmail.com
+        server_port: 587
+        username: ${{ secrets.EMAIL_USERNAME }}
+        password: ${{ secrets.EMAIL_PASSWORD }}
+        subject: "Test Execution Report - Run #${{ github.run_number }}"
+        to: "ghodake.anup@thinkitive.com"
+        from: "anupghodake28@gmail.com"
+        attachments: "target/surefire-reports/emailable-report.html"
+        body: |
+          Hello Team,
+
+          Test Execution has been completed for Run #${{ github.run_number }}.
+          I've attached the TestNG HTML Report.
+
+          Regards,
+          Anup G 
