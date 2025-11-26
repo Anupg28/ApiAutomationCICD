@@ -12,49 +12,76 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
     - name: Notify Start - Google Chat
       run: |
-        curl -H 'Content-Type: application/json' \
-        -d "{\"text\": \"🚀 Test Execution Started\n🔹 Repo: ${{ github.repository }}\n👤 Triggered by: ${{ github.actor }}\n🔁 Run ID: #${{ github.run_number }}\"}" \
+        curl -H "Content-Type: application/json" \
+        -d "{\"text\": \"🚀 Test Execution Started\n🔹 Repo: ${{ github.repository }}\n👤 User: ${{ github.actor }}\n🏁 Run #${{ github.run_number }}\"}" \
         "${{ secrets.GOOGLE_CHAT_WEBHOOK }}"
 
-    - name: Checkout repo
+    - name: Checkout Repository
       uses: actions/checkout@v3
+
+    - name: Install XML parser
+      run: sudo apt-get install -y libxml2-utils
 
     - name: Set up Java
       uses: actions/setup-java@v3
       with:
-        distribution: 'temurin'
-        java-version: '17'
+        distribution: temurin
+        java-version: 17
 
-    - name: Build with Maven and run tests
+    - name: Execute Tests
       continue-on-error: true
       run: mvn clean test -DsuiteXmlFile=testng.xml
-      
 
-    # - name: Archive Test Report
-    #   uses: actions/upload-artifact@v4
-    #   with:
-    #     name: surefire-report
-    #     path: target/surefire-reports/
 
-    - name: Archive Test Report
+    # ------- Extract Results --------
+
+    - name: Extract Test Results
+      id: results
+      if: always()
+      run: |
+        FILE="target/surefire-reports/testng-results.xml"
+        if [ ! -f "$FILE" ]; then
+          echo "passed=0" >> $GITHUB_OUTPUT
+          echo "failed=0" >> $GITHUB_OUTPUT
+          echo "skipped=0" >> $GITHUB_OUTPUT
+          echo "total=0" >> $GITHUB_OUTPUT
+          exit 0
+        fi
+
+        echo "passed=$(xmllint --xpath 'string(/testng-results/@passed)' $FILE)" >> $GITHUB_OUTPUT
+        echo "failed=$(xmllint --xpath 'string(/testng-results/@failed)' $FILE)" >> $GITHUB_OUTPUT
+        echo "skipped=$(xmllint --xpath 'string(/testng-results/@skipped)' $FILE)" >> $GITHUB_OUTPUT
+        echo "total=$(xmllint --xpath 'string(/testng-results/@total)' $FILE)" >> $GITHUB_OUTPUT
+
+
+    # ------- Upload Report --------
+
+    - name: Save Test Report
       if: always()
       uses: actions/upload-artifact@v4
       with:
-        name: surefire-report
+        name: TestNG-report
         path: target/surefire-reports/
 
-    - name: Create timestamped report directory
-      if: always()
-      id: timestamp
-      run: |
-        export TS="run-$(date +%Y-%m-%d_%H-%M-%S)"
-        mkdir -p gh-pages/$TS
-        cp -r target/surefire-reports/* gh-pages/$TS/
-        echo "report_path=$TS" >> $GITHUB_OUTPUT
 
-    - name: Deploy timestamped report to GitHub Pages
+    # ------- Create Timestamp Folder --------
+
+    - name: Prepare report folder
+      id: folder
+      if: always()
+      run: |
+        ts="run-$(date +%Y-%m-%d_%H-%M-%S)"
+        mkdir -p gh-pages/$ts
+        cp -r target/surefire-reports/* gh-pages/$ts/
+        echo "path=$ts" >> $GITHUB_OUTPUT
+
+
+    # ------- Deploy to GH Pages --------
+
+    - name: Upload to GitHub Pages
       if: always()
       uses: peaceiris/actions-gh-pages@v3
       with:
@@ -64,16 +91,17 @@ jobs:
         publish_dir: gh-pages
         keep_files: true
 
+
+    # ------- Google Chat Final Msg --------
+
     - name: Notify Completion - Google Chat
       if: always()
       run: |
-        STATUS="${{ job.status }}"
-        REPORT_PATH="${{ steps.timestamp.outputs.report_path }}"
-        REPORT_URL="https://Anupg28.github.io/api-test-reports/${REPORT_PATH}/emailable-report.html"
-
-        curl -H 'Content-Type: application/json' \
-        -d "{\"text\": \"✅ Test Execution Completed\n📄 Status: $STATUS\n📎 [View Report]($REPORT_URL)\n👤 Author: ${{ github.actor }}\n🔁 Run ID: #${{ github.run_number }}\"}" \
+        curl -H "Content-Type: application/json" \
+        -d "{\"text\": \"✅ Test Run Completed #${{ github.run_number }}\n📊 Results:\n✔ Passed: ${{ steps.results.outputs.passed }}\n❌ Failed: ${{ steps.results.outputs.failed }}\n⚠ Skipped: ${{ steps.results.outputs.skipped }}\n📦 Total: ${{ steps.results.outputs.total }}\n🔗 Report: https://Anupg28.github.io/api-test-reports/${{ steps.folder.outputs.path }}/emailable-report.html\"}" \
         "${{ secrets.GOOGLE_CHAT_WEBHOOK }}"
+
+    # ------- Email Report --------
 
     - name: Send Email Report
       if: always()
@@ -83,15 +111,22 @@ jobs:
         server_port: 587
         username: ${{ secrets.EMAIL_USERNAME }}
         password: ${{ secrets.EMAIL_PASSWORD }}
-        subject: "Test Execution Report - Run #${{ github.run_number }}"
+        subject: "CI Test Run #${{ github.run_number }} - Summary"
         to: "ghodake.anup@thinkitive.com"
         from: "anupghodake28@gmail.com"
-        attachments: "target/surefire-reports/emailable-report.html"
+        attachments: target/surefire-reports/emailable-report.html
         body: |
-          Hello Team,
+          Hi Team,
 
-          Test Execution has been completed for Run #${{ github.run_number }}.
-          I've attached the TestNG HTML Report.
+          CI Pipeline Execution finished.
+
+          📊 Test Summary:
+          ✔ Passed: ${{ steps.results.outputs.passed }}
+          ❌ Failed: ${{ steps.results.outputs.failed }}
+          ⚠ Skipped: ${{ steps.results.outputs.skipped }}
+          📦 Total: ${{ steps.results.outputs.total }}
+
+          Report is attached and archived in GitHub Pages.
 
           Regards,
           Anup G
