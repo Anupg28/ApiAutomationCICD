@@ -8,7 +8,7 @@ import java.util.List;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class AgamSir {
+public class DataProviderReader {
 	 public Object[][] readJson(String jsonFilePath) throws IOException {
 	        // Define the file path to the JSON file
 	        File file = new File(jsonFilePath);
