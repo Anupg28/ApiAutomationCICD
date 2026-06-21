@@ -17,7 +17,7 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
-public class AgamSirDataprovider extends TestBase {
+public class Dataprovider extends TestBase {
 
     @DataProvider(name = "test")
     public Object[][] readJson() throws IOException {
